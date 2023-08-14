@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .cart-item {
+            margin-bottom: 30px;
+        }
+
+        .cart-item h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-item p {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .action-btns {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .action-btns button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .action-btns button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cart</h1>
+
+    <div class="cart-item">
+        <h3>Winning Product</h3>
+        <p id="winning-product"></p>
+    </div>
+
+    <div class="cart-item">
+        <h3>Winning Price</h3>
+        <p id="winning-price"></p>
+    </div>
+
+    <div class="action-btns">
+        <button id="remove-btn">Remove</button>
+        <button id="buy-btn">Buy Now</button>
+    </div>
+
+    <script>
+        // Retrieve the winning product and price from sessionStorage
+        var winningProduct = sessionStorage.getItem("winningProduct");
+        var winningPrice = sessionStorage.getItem("winningPrice");
+
+        // Display the winning product and price
+        document.getElementById("winning-product").textContent = winningProduct;
+        document.getElementById("winning-price").textContent = "Price: Rs " + winningPrice;
+
+        // Add an event listener to the Remove button
+        document.getElementById("remove-btn").addEventListener("click", function() {
+            // Perform the desired action when the Remove button is clicked
+            // For example, you can remove the product from the cart or update the cart quantity
+
+            // Display a confirmation message
+            alert("The product has been removed from the cart.");
+
+            // Clear the sessionStorage
+            sessionStorage.removeItem("winningProduct");
+            sessionStorage.removeItem("winningPrice");
+        });
+
+        // Add an event listener to the Buy Now button
+        document.getElementById("buy-btn").addEventListener("click", function() {
+            // Perform the desired action when the Buy Now button is clicked
+            // For example, you can redirect to a payment page or process the purchase
+
+            // Redirect to the payment page
+            window.location.href = "payment.html";
+        });
+    </script>
+</body>
+</html>

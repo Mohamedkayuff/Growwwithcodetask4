@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .payment-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .payment-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .payment-form input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .payment-form button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .payment-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Payment</h1>
+
+    <div class="payment-form">
+        <form>
+            <label for="name">Name on Card</label>
+            <input type="text" id="name" placeholder="John Doe" required>
+
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+
+            <label for="expiry-date">Expiry Date</label>
+            <input type="text" id="expiry-date" placeholder="MM/YY" required>
+
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" placeholder="123" required>
+
+            <button id="submit-btn">Submit Payment</button>
+        </form>
+    </div>
+
+    <script>
+        // Add an event listener to the Submit button
+        document.getElementById("submit-btn").addEventListener("click", function(event) {
+            event.preventDefault();
+
+            // Perform the desired action when the Submit button is clicked
+            // For example, you can validate the form inputs and process the payment
+
+            // Display a confirmation message
+            alert("Payment successful! Order confirmed.");
+
+            // Redirect to the home page after 2 seconds
+            setTimeout(function() {
+                window.location.href = "home.html";
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

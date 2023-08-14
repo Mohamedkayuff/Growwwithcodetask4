@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Sign In</button>
+        </form>
+        <p>Not a member yet? <a href="signup.html">Sign Up</a></p>
+    </div>
+
+    <script>
+        // Get the login form element
+        const loginForm = document.getElementById('login-form');
+
+        // Add event listener for form submission
+        loginForm.addEventListener('submit', handleFormSubmit);
+
+        // Function to handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the entered username and password
+            const username = document.querySelector('input[name="username"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+
+            // Perform validation against sign-up data
+            const signUpData = JSON.parse(localStorage.getItem('signupData'));
+
+            if (signUpData) {
+                const user = signUpData.find(user => user.username === username && user.password === password);
+
+                if (user) {
+                    // Successful login, store username and redirect to home.html
+                    localStorage.setItem('username', username);
+                    window.location.href = 'home.html?username=' + encodeURIComponent(username);
+                } else {
+                    // Display error message
+                    const errorElement = document.createElement('p');
+                    errorElement.textContent = 'Invalid username or password';
+                    errorElement.classList.add('error-message');
+                    loginForm.appendChild(errorElement);
+                }
+            } else {
+                // Display error message
+                const errorElement = document.createElement('p');
+                errorElement.textContent = 'No sign-up data found';
+                errorElement.classList.add('error-message');
+                loginForm.appendChild(errorElement);
+            }
+        }
+    </script>
+</body>
+</html>

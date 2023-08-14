@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auction Shopping Home</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 250px;
+            border: none;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding:10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+
+        .user-dropdown {
+            position: relative;
+        }
+
+        .user-dropdown .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 120px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            border-radius: 5px;
+            top: 70%;
+            right: 0;
+        }
+
+        .user-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .user-dropdown .dropdown-content a {
+            color: black;
+            padding: 10px 12px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .user-dropdown .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .user-dropdown .dropbtn {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .user-dropdown .dropbtn:hover {
+            background-color: #0056b3;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .product-item {
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-item img {
+            width: 200px;
+            
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .product-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product-item p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .product-item a {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-item a:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .name{
+            font-size: small;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .head{
+            color: #007bff;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="auction.png" alt="Cheapest Auction" height="50">
+            <div class="name"><p>The Cheapest market</p></div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search" id="searchInput">
+            <button>Search</button>
+        </div>
+        <div class="user-dropdown">
+            <button class="dropbtn" id="usernameButton"></button>
+            <div class="dropdown-content">
+                <a href="index.html" onclick="logout()">Logout</a>
+            </div>
+        </div>
+        <div class="cart">
+            <a href="cart.html"><img src="cart-icon.png" alt="Cart" height="40"></a>
+        </div>
+    </div>
+
+    <div class="head"><h1>Welcome to Cheapest market</h1></div>
+    
+    <div class="product-list">
+        <div class="product-item">
+            <div class="image"><img src="laptop-image.jpg" alt="Laptop"></div>
+            <h3>asus</h3>
+            <p>Starting Price: Rs 10000</p>
+            <a href="bid.html?product=laptop">Buy Now</a>
+        </div>
+        <div class="product-item">
+            <div class="image"><img src="mobile-image.jpg" alt="Mobile"></div>
+            <h3>Mobile</h3>
+            <p>Starting Price: Rs 5000</p>
+            <a href="bid.html?product=mobile">Buy Now</a>
+        </div>
+        <div class="product-item">
+            <div class="image"><img src="dress-image.jpg" alt="dress"></div>
+            <h3>women dress</h3>
+            <p>Starting Price: Rs 10000</p>
+            <a href="bid.html?product=dress">Buy Now</a>
+        </div>
+        <div class="product-item">
+            <div class="image"><img src="mobile1-image.jpg" alt="electronic"></div>
+            <h3>Pendrive</h3> 
+            <p>Starting Price: Rs 250</p>
+            <a href="bid.html?product=electronic">Buy Now</a>
+        </div>
+        <div class="product-item">
+            <div class="image"><img src="laptop1-image.jpg" alt="Laptop"></div>
+            <h3>Dell</h3>
+            <p>Starting Price: Rs 10000</p>
+            <a href="bid.html?product=laptop1">Buy Now</a>
+        </div>
+        <div class="product-item">
+            <div class="image"><img src="mobile-image.jpg" alt="Mobile"></div>
+            <h3>Mobile</h3>
+            <p>Starting Price: Rs 5000</p>
+            <a href="bid.html?product=mobile">Bid Now</a>
+        </div>
+        <div class="product-item">
+            <div class="image"><img src="dress1.jpeg" alt="dress"></div>
+            <h3>kids dress</h3>
+            <p>Starting Price: Rs 500</p>
+            <a href="bid.html?product=dress1">Buy Now</a>
+        <div class="product-item">
+            <div class="image"><img src="mobile2-image.jpg" alt="Mobile"></div>
+            <h3>Mobile</h3>
+            <p>Starting Price: Rs 5000</p>
+            <a href="bid.html?product=mobile2">Buy Now</a>
+        </div>
+        <div class="product-item">
+            <div class="image"><img src="dress2.jpeg" alt="dress"></div>
+            <h3>kids dress</h3>
+            <p>Starting Price: Rs 400</p>
+            <a href="bid.html?product=dress2">Buy Now</a>
+        </div>
+        <div class="product-item">
+            <div class="image"><img src="laptop2-image.jpg" alt="Laptop"></div>
+            <h3>Hp</h3>
+            <p>Starting Price: Rs 10000</p>
+            <a href="bid.html?product=laptop2">Buy Now</a>
+        </div>
+        <div class="product-item">
+            <div class="image"><img src="mobile3-image.jpg" alt="Mobile"></div>
+            <h3>Mobile</h3> 
+            <p>Starting Price: Rs 5000</p>
+            <a href="bid.html?product=mobile3">Buy Now</a>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2023 Auction Shopping. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+
+    <script>
+        // Get the username from the query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        
+        // Update the username button text
+        const usernameButton = document.getElementById('usernameButton');
+        usernameButton.textContent = username;
+        
+        // Logout function
+        function logout() {
+            // Implement your logout logic here
+            alert('Logged out successfully');
+        }
+
+        // Search function
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.querySelector('.search-bar button');
+        const productItems = document.querySelectorAll('.product-item');
+
+        searchButton.addEventListener('click', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+            productItems.forEach(function(productItem) {
+                const productName = productItem.querySelector('h3').textContent.toLowerCase();
+                if (productName.includes(searchTerm)) {
+                    productItem.style.display = 'block';
+                } else {
+                    productItem.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

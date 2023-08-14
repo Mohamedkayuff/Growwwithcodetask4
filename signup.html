@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        .signup-container {
+            width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .signup-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .signup-container input[type="text"],
+        .signup-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .signup-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .signup-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already a member? <a href="index.html">Sign In</a></p>
+    </div>
+
+    <script>
+        // Get the signup form element
+        const signupForm = document.getElementById('signup-form');
+
+        // Add event listener for form submission
+        signupForm.addEventListener('submit', handleFormSubmit);
+
+        // Function to handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the entered username and password
+            const username = document.querySelector('input[name="username"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+
+            // Perform validation
+            const signUpData = JSON.parse(localStorage.getItem('signupData')) || [];
+
+            // Check if the username is already taken
+            const isUsernameTaken = signUpData.some(user => user.username === username);
+
+            if (isUsernameTaken) {
+                // Display error message
+                const errorElement = document.createElement('p');
+                errorElement.textContent = 'Username already taken';
+                errorElement.classList.add('error-message');
+                signupForm.appendChild(errorElement);
+            } else {
+                // Add the new user to sign-up data
+                signUpData.push({ username, password });
+
+                // Store the updated sign-up data in localStorage
+                localStorage.setItem('signupData', JSON.stringify(signUpData));
+
+                // Redirect to login page
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>
